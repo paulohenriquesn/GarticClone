@@ -1,4 +1,8 @@
-var socket = io.connect("http://paulohenriquesn.com:80");
+var socket = io.connect("localhost:80");
+
+socket.on("count",(data)=>{
+  $("#usersConnected").text("Usuarios Conectados: " + data);
+});
 
 $("#btnSend").click(()=> {
    socket.emit("chat",{
