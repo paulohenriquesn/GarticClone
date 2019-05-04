@@ -1,8 +1,15 @@
-var socket = io.connect("localhost:80");
+var socket = io.connect("http://paulohenriquesn.com:80");
+
+/*function filterNullValues (i) {
+  return (i!=null);
+}
+$("#usersConnected").text("Usuarios Conectados: " + io.sockets.clients().filter(filterNullValues).length); 
+*/
 
 socket.on("count",(data)=>{
   $("#usersConnected").text("Usuarios Conectados: " + data);
 });
+
 
 $("#btnSend").click(()=> {
    socket.emit("chat",{
@@ -16,12 +23,12 @@ $("#btnClear").click(()=>{
 });
 
 socket.on("chat",(data)=>{
-  $("#chat").append("<li>" + data['name'] + ":" + data['msg'] + "</li>");
+  $("#chat").append("<li style='list-style:none; font-family:'Roboto';'><font color='white'>" + data['name'] + " disse " + data['msg'] + "</font></li>");
 });
 
 socket.on("game",(data)=>{
   if(data != "clear")
-    rect(data['x'],data['y'],data['size'],data['size']);
+    ellipse(data['x'],data['y'],data['size'],data['size']);
     else {
       background('white');
         background(props.bkcolor);
@@ -29,32 +36,18 @@ socket.on("game",(data)=>{
 });
 
 var props = {
-  mouseX: 0,
-  mouseY: 0,
-  Draw: false,
-  bkcolor: 'gray'
+  bkcolor: 'white'
 };
-  $("body").ready(function(){
-$("body").mouseup(function(){
-    props.Draw = false;
-});
-$("body").mousedown(function(){
-    props.Draw = true;
-});
-});
 
-$('body').mousemove((event)=>{
-  props.mouseX = event.clientX;
-  props.mouseY = event.clientY;
-  if(props.Draw == true){
-    var c = color('white');
+function mouseDragged() {
+var c = color('black');
     fill(c);
     noStroke();
-    socket.emit("game",{x:props.mouseX-10,y:props.mouseY-150,size:5});
-  }
-});
+    socket.emit("game",{x:mouseX,y:mouseY,size:5});
+}
 
 function setup(){
-  createCanvas(640,360);
-  background('gray');
+  var canvas = createCanvas(640,360);
+     canvas.parent('sketch-holder');
+  background('white');
 }
