@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    </head>
+    <body>
+    	<header>
+    		<hgroup>
+    			<h1 class="uk-background-primary">Joguin</h1>
+    		</hgroup>
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+             <div class="uk-navbar-center">
+                <ul id="navBar">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Entrar</a></li>
+                    <li><a href="#">Cadastrar</a></li>
+                    <li><a href="#">Salas</a></li>
+                <ul>
+            </div>
+            </nav>
+    	</header>
+        <article>
+            <div class="uk-container">
+                <nav id="room">
+                    <nav id="alert">
+                        <nav id="alertNick">
+                            <div class="uk-alert-danger" uk-alert>
+                                <a class="uk-alert-close" uk-close></a>
+                                <p>Nickname Incorreto!</p>
+                            </div>
+                        </nav>
+                    </nav>
+                    <hgroup>
+                        <h3>Lista de Salas</h3>
+                        <h4 id="playersPlayingText">0 Pessoas Jogando</h4>
+                    </hgroup>
+                    <hr>
+                    <div class="uk-width-1-4@s">
+                     <input class="uk-input" type="text" id="nickNameInput" placeholder="Nickname">
+                 </div>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Tipo de Jogo</th>
+                                <th>Usuarios Conectados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alimentos</td>
+                                <td><font color="green"><p id="users_Alimentos">0/10</p></font></td>
+                                <td><button class="uk-button uk-button-default" type="button" id="playRoom" onclick="connectRoom()" room="Alimentos">Jogar</button></td>
+                            </tr>                          
+                             <tr>
+                                <td>Objetos</td>
+                                <td><font color="green"><p id="users_Objetos">0/10</p></font></td>
+                                <td><button class="uk-button uk-button-default" type="button" id="playRoom" onclick="connectRoom()"onclick="connectRoom()" room="Objetos">Jogar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </nav>
+            </div>
+        </article>
+    </body>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <script src="socket.js"></script>
+    <script src="main.js"></script>
+</html>

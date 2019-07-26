@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    </head>
+    <style>
+        * {
+            margin:0;
+        }
+        body {
+            background-color:rgb(0,129,255);
+        }
+            #canvasDiv {
+                background-color:white;
+                border-style: solid;
+            }
+    </style>
+    <body>
+    	<header>
+    		<hgroup>
+    			<h1 class="uk-background-primary">Joguin</h1>
+    		</hgroup>
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+             <div class="uk-navbar-center">
+                <ul id="navBar">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Entrar</a></li>
+                    <li><a href="#">Cadastrar</a></li>
+                    <li><a href="#">Salas</a></li>
+                <ul>
+            </div>
+            </nav>
+    	</header>
+        <article>
+            <div class="uk-container">
+                <canvas id="canvasInAPerfectWorld" width="490" height="220"></canvas>
+                <div id="canvasDiv"></div>
+            </div>
+        </article>
+    </body>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="../socket.js"></script>
+    <script src="main.js"></script>
+</html>
