@@ -1,43 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Game</title>
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Roboto" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
-</head>
-<center>
-<body style="background-color:#e74c3c;">
-	<header>
-	<hgroup>
-		<h1 style="color:white; font-family:'Roboto';">sala: gartic foda</h1>
-	</hgroup>
-	<p id="Tematext" style="color:white; font-family:'Roboto';">Tema: empty  </p>
-	<p id="usersConnected" style="color:white; font-family:'Roboto';">Usuarios Conectados: 0 </p>
-	<p id="timeGame" style="color:white; font-family:'Roboto';">Tempo restante: 0s </p>
-</header>
-<hr>
-<input type="text" id="txtName" value="guest"></input><br>
-<input type="text" id="txt" value="msg"></input>
-<button id="btnSend">Enviar</button>
-<button id="btnClear">Limpar Desenho</button>
-<hr>
-    <div id="sketch-holder">
-      <!-- Our sketch will go here! -->
-    </div>
-    <hr>
-    <ul id="chat">
-</ul>
-<script src="/app.js"></script>
-</body>
-</center>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    </head>
+    <body>
+    	<header>
+    		<hgroup>
+    			<h1 class="uk-background-primary">Joguin</h1>
+    		</hgroup>
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+             <div class="uk-navbar-center">
+                <ul id="navBar">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Entrar</a></li>
+                    <li><a href="#">Cadastrar</a></li>
+                    <li><a href="#">Salas</a></li>
+                <ul>
+            </div>
+            </nav>
+    	</header>
+        <article>
+            <div class="uk-container">
+                <nav id="room">
+                    <nav id="alert">
+                        <nav id="alertNick">
+                            <div class="uk-alert-danger" uk-alert>
+                                <a class="uk-alert-close" uk-close></a>
+                                <p>Nickname Incorreto!</p>
+                            </div>
+                        </nav>
+                    </nav>
+                    <hgroup>
+                        <h3>Lista de Salas</h3>
+                        <h4 id="playersPlayingText">0 Pessoas Jogando</h4>
+                    </hgroup>
+                    <hr>
+                    <div class="uk-width-1-4@s">
+                     <input class="uk-input" type="text" id="nickNameInput" placeholder="Nickname">
+                 </div>
+                    <table class="uk-table uk-table-justify uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Tipo de Jogo</th>
+                                <th>Usuarios Conectados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alimentos</td>
+                                <td><font color="green"><p id="users_Alimentos">0/10</p></font></td>
+                                <td><button class="uk-button uk-button-default" type="button" id="playRoom" onclick="connectRoom()" room="Alimentos">Jogar</button></td>
+                            </tr>                          
+                             <tr>
+                                <td>Objetos</td>
+                                <td><font color="green"><p id="users_Objetos">0/10</p></font></td>
+                                <td><button class="uk-button uk-button-default" type="button" id="playRoom" onclick="connectRoom()"onclick="connectRoom()" room="Objetos">Jogar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </nav>
+            </div>
+        </article>
+    </body>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <script src="socket.js"></script>
+    <script src="main.js"></script>
 </html>
